@@ -46,12 +46,18 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCS-kL-Jbq">
                                                     <rect key="frame" x="13" y="13" width="42" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="0.57939357709999995" blue="0.186327825" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-60" translatesAutoresizingMaskIntoConstraints="NO" id="bOc-We-f7s">
+                                                    <rect key="frame" x="280" y="6" width="24" height="27.5"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="bOc-We-f7s" firstAttribute="leading" secondItem="XBk-mc-XgM" secondAttribute="leading" constant="280" id="6EB-En-WfM"/>
+                                                <constraint firstAttribute="trailing" secondItem="bOc-We-f7s" secondAttribute="trailing" constant="16" id="867-be-WHg"/>
                                                 <constraint firstAttribute="bottom" secondItem="yCS-kL-Jbq" secondAttribute="bottom" constant="10" id="D0V-Ir-dfx"/>
+                                                <constraint firstAttribute="bottom" secondItem="bOc-We-f7s" secondAttribute="bottom" constant="10.5" id="HVS-Ki-5nC"/>
+                                                <constraint firstItem="bOc-We-f7s" firstAttribute="top" secondItem="XBk-mc-XgM" secondAttribute="top" constant="6" id="XK0-P0-sDS"/>
                                                 <constraint firstItem="yCS-kL-Jbq" firstAttribute="leading" secondItem="XBk-mc-XgM" secondAttribute="leading" constant="13" id="atX-JA-NI9"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -151,6 +157,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Icon-60" width="60" height="60"/>
         <image name="bg" width="320" height="200"/>
     </resources>
 </document>

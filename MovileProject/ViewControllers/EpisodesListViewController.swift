@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EpisodesListViewController: UIViewController {
+class EpisodesListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let episodes = Episode.allEpisodes()
     
@@ -24,10 +24,11 @@ class EpisodesListViewController: UIViewController {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return episodes.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let identifier = Reusable.Cell.identifier!
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! CellTableViewCell
         cell.loadEpisodes(episodes[indexPath.row])
