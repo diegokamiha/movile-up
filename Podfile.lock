@@ -1,13 +1,37 @@
 PODS:
+  - Alamofire (1.2.3)
+  - Box (1.2.2)
+  - ISO8601DateFormatter (0.7)
   - Nimble (1.0.0)
   - OHHTTPStubs (4.0.2)
+  - Result (0.4.4):
+    - Box (~> 1.2)
+  - TraktModels (0.1.0):
+    - ISO8601DateFormatter (~> 0.7)
 
 DEPENDENCIES:
+  - Alamofire
   - Nimble
   - OHHTTPStubs
+  - Result
+  - TraktModels (from `https://github.com/marcelofabri/TraktModels.git`)
+
+EXTERNAL SOURCES:
+  TraktModels:
+    :git: https://github.com/marcelofabri/TraktModels.git
+
+CHECKOUT OPTIONS:
+  TraktModels:
+    :commit: 4f0b767a43e110a2b590df5921dd87e63ac21b13
+    :git: https://github.com/marcelofabri/TraktModels.git
 
 SPEC CHECKSUMS:
+  Alamofire: 5550bf0b575ed1a4bf9be572f9463e1015cc169e
+  Box: a92e8aa4c099e6bc0733829665caf9e668ef53b8
+  ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
   Nimble: 8bee528e5fcc403653076545db562d2b5db7bb87
   OHHTTPStubs: dbd1957d414659783e07b49c961940b7564c23d9
+  Result: b44f6bc8762bbffaf2c5df58f2c7d12c3496ced8
+  TraktModels: bb7f4bbee75805f72747e492d5ca6c9583c1dfcb
 
 COCOAPODS: 0.37.2

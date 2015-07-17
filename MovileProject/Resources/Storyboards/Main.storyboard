@@ -14,12 +14,94 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="dXE-TP-rVT" kind="relationship" relationship="rootViewController" id="KlS-BV-CXW"/>
+                        <segue destination="mok-Be-uuz" kind="relationship" relationship="rootViewController" id="xtU-Bp-bNV"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uBJ-RY-32b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="410" y="542"/>
+        </scene>
+        <!--Shows-->
+        <scene sceneID="Ck8-B1-fHW">
+            <objects>
+                <viewController id="mok-Be-uuz" customClass="ShowsCollectionViewController" customModule="MovileProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NeS-R2-2xa"/>
+                        <viewControllerLayoutGuide type="bottom" id="IkS-8Y-m9x"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KYv-p5-urs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6v8-LL-APt">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="1Dw-Bq-8qT">
+                                    <size key="itemSize" width="136" height="156"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionCell" id="Yot-Z8-RoF" customClass="SeriesCollectionViewCell" customModule="MovileProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="136" height="156"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="WM1-AC-etv">
+                                                    <rect key="frame" x="15" y="8" width="107" height="125"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pi9-Sh-uVR">
+                                                    <rect key="frame" x="8" y="135" width="120" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Pi9-Sh-uVR" secondAttribute="trailing" constant="8" id="02i-lA-hrM"/>
+                                            <constraint firstItem="Pi9-Sh-uVR" firstAttribute="top" secondItem="Yot-Z8-RoF" secondAttribute="top" constant="135" id="Fdn-1a-baX"/>
+                                            <constraint firstItem="WM1-AC-etv" firstAttribute="top" secondItem="Yot-Z8-RoF" secondAttribute="top" constant="8" id="eN1-7B-Gmh"/>
+                                            <constraint firstAttribute="bottom" secondItem="WM1-AC-etv" secondAttribute="bottom" constant="23" id="hNr-6d-sFM"/>
+                                            <constraint firstItem="Pi9-Sh-uVR" firstAttribute="top" secondItem="WM1-AC-etv" secondAttribute="bottom" constant="2" id="j4q-Mj-5tx"/>
+                                            <constraint firstItem="Pi9-Sh-uVR" firstAttribute="leading" secondItem="Yot-Z8-RoF" secondAttribute="leading" constant="8" id="jcz-sK-8OK"/>
+                                            <constraint firstAttribute="trailing" secondItem="WM1-AC-etv" secondAttribute="trailing" constant="14" id="lf6-zK-1zu"/>
+                                            <constraint firstItem="WM1-AC-etv" firstAttribute="leading" secondItem="Yot-Z8-RoF" secondAttribute="leading" constant="15" id="xmC-53-gas"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="j4q-Mj-5tx"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="serieImage" destination="WM1-AC-etv" id="aUw-Xg-v0b"/>
+                                            <outlet property="serieTitle" destination="Pi9-Sh-uVR" id="6nU-NB-LeC"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="mok-Be-uuz" id="1yA-Cz-HoM"/>
+                                    <outlet property="delegate" destination="mok-Be-uuz" id="vT2-fb-FJi"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6v8-LL-APt" firstAttribute="top" secondItem="KYv-p5-urs" secondAttribute="top" id="RXC-zi-IDA"/>
+                            <constraint firstItem="6v8-LL-APt" firstAttribute="leading" secondItem="KYv-p5-urs" secondAttribute="leading" id="TMl-CR-4JE"/>
+                            <constraint firstAttribute="trailing" secondItem="6v8-LL-APt" secondAttribute="trailing" id="TWq-FB-MP0"/>
+                            <constraint firstItem="IkS-8Y-m9x" firstAttribute="top" secondItem="6v8-LL-APt" secondAttribute="bottom" id="U86-N2-sJY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Shows" id="wW0-DV-nMe"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BNd-du-MZn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="801" y="542"/>
         </scene>
         <!--Season-->
         <scene sceneID="t7k-Xh-xKI">
@@ -30,11 +112,11 @@
                         <viewControllerLayoutGuide type="bottom" id="yZS-0o-pkk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="85C-5a-pvq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ew2-x9-d0F">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="cLH-0b-FRv" customClass="CellTableViewCell" customModule="MovileProject" customModuleProvider="target">
@@ -48,8 +130,8 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-60" translatesAutoresizingMaskIntoConstraints="NO" id="bOc-We-f7s">
-                                                    <rect key="frame" x="280" y="6" width="24" height="27.5"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Icon-60" translatesAutoresizingMaskIntoConstraints="NO" id="bOc-We-f7s">
+                                                    <rect key="frame" x="280" y="10" width="24" height="23.5"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -57,7 +139,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="bOc-We-f7s" secondAttribute="trailing" constant="16" id="867-be-WHg"/>
                                                 <constraint firstAttribute="bottom" secondItem="yCS-kL-Jbq" secondAttribute="bottom" constant="10" id="D0V-Ir-dfx"/>
                                                 <constraint firstAttribute="bottom" secondItem="bOc-We-f7s" secondAttribute="bottom" constant="10.5" id="HVS-Ki-5nC"/>
-                                                <constraint firstItem="bOc-We-f7s" firstAttribute="top" secondItem="XBk-mc-XgM" secondAttribute="top" constant="6" id="XK0-P0-sDS"/>
+                                                <constraint firstItem="bOc-We-f7s" firstAttribute="top" secondItem="XBk-mc-XgM" secondAttribute="top" constant="10" id="XK0-P0-sDS"/>
                                                 <constraint firstItem="yCS-kL-Jbq" firstAttribute="leading" secondItem="XBk-mc-XgM" secondAttribute="leading" constant="13" id="atX-JA-NI9"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -84,7 +166,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UoW-VJ-6ja" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="808" y="610"/>
+            <point key="canvasLocation" x="1282" y="535"/>
         </scene>
         <!--Teste-->
         <scene sceneID="3dJ-9W-lX6">
@@ -117,7 +199,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vqK-8E-o4b">
                                 <rect key="frame" x="13" y="304" width="574" height="264"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -159,5 +241,6 @@
     <resources>
         <image name="Icon-60" width="60" height="60"/>
         <image name="bg" width="320" height="200"/>
+        <image name="clock" width="38" height="34"/>
     </resources>
 </document>

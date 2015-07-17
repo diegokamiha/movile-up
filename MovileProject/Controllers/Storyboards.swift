@@ -180,6 +180,38 @@ extension UITableView {
 
 //MARK: - CustomNavigationController
 
+//MARK: - ShowsCollectionViewController
+extension ShowsCollectionViewController { 
+
+    enum Reusable: String, Printable, ReusableViewProtocol {
+        case CollectionCell = "CollectionCell"
+
+        var kind: ReusableKind? {
+            switch (self) {
+            case CollectionCell:
+                return ReusableKind(rawValue: "collectionViewCell")
+            default:
+                preconditionFailure("Invalid value")
+                break
+            }
+        }
+
+        var viewType: UIView.Type? {
+            switch (self) {
+            case CollectionCell:
+                return SeriesCollectionViewCell.self
+            default:
+                return nil
+            }
+        }
+
+        var identifier: String? { return self.description } 
+        var description: String { return self.rawValue }
+    }
+
+}
+
+
 //MARK: - EpisodesListViewController
 extension EpisodesListViewController { 
 

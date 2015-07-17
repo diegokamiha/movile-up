@@ -6,8 +6,9 @@ inhibit_all_warnings!
 use_frameworks!
 
 target 'MovileProject', :exclusive => true do
-    # Add Application pods here
-    
+   pod 'Alamofire'
+   pod 'Result'
+   pod 'TraktModels', :git => 'https://github.com/marcelofabri/TraktModels.git'			
 end
 
 target :unit_tests, :exclusive => true do
