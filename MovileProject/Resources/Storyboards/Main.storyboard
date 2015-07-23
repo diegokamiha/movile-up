@@ -98,6 +98,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Shows" id="wW0-DV-nMe"/>
+                    <connections>
+                        <outlet property="collectionView" destination="6v8-LL-APt" id="Xo4-QZ-fXV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BNd-du-MZn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -166,7 +169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UoW-VJ-6ja" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1282" y="535"/>
+            <point key="canvasLocation" x="1318" y="558"/>
         </scene>
         <!--Teste-->
         <scene sceneID="3dJ-9W-lX6">

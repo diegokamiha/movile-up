@@ -23,7 +23,4 @@ class CellTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func loadEpisodes(episode : Episode){
-        episodeTitle.text = episode.title + String(episode.number)
-    }
 }

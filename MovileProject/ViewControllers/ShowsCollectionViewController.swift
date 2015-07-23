@@ -7,16 +7,88 @@
 //
 
 import UIKit
+import TraktModels
+import Result
 
 class ShowsCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    let series = Serie.allSeries()
     
+    private var httpClient = TraktHTTPClient()
+    private var shows: [Show]?
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    func loadShows(){
+        httpClient.getPopularShows{ [weak self] result in
+            if let shows = result.value{
+                self?.shows = shows
+                self?.collectionView.reloadData()
+            }else{
+                println("An error occured \(result.error)")
+            }
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loadShows()
+        /*httpClient.getShow("game-of-thrones", completion: printShow)
+        httpClient.getEpisode("game-of-thrones", season: 1, episodeNumber: 1, completion: printEpisode)
+        httpClient.getPopularShows(printPopularShows)
+        httpClient.getSeasons("game-of-thrones", completion: printSeasons)
+        httpClient.getEpisodes("game-of-thrones", season: 1, completion: printEpisodes)*/
         // Do any additional setup after loading the view.
     }
+    
+    /*===================================================   BEGIN - TESTS ==============================================================================================*/
+    
+    func printShow(show: Result<Show, NSError?>) -> Void{
+        if let rShow = show.value{
+            println(rShow.title)
+        }else{
+            println("An error occured")
+        }
+    }
+    
+    func printEpisode(episode: Result<Episode, NSError?>) -> Void{
+        if let rEpisode = episode.value{
+            println(rEpisode.title)
+        }else{
+            println("An error occured")
+        }
+    }
+    
+    func printPopularShows(popularShows: Result<[Show], NSError?>) -> Void{
+        if let array =  popularShows.value{
+            for elem in array {
+                println(elem.title)
+            }
+        }else{
+            println("An error occured")
+        }
+    }
+    
+    func printSeasons(seasons: Result<[Season], NSError?>) -> Void{
+        if let array = seasons.value{
+            for elem in array {
+                println(elem.number)
+            }
+        }else{
+            println("An error occured")
+        }
+    }
+    
+    func printEpisodes(episodes: Result<[Episode], NSError?>) -> Void {
+        if let array = episodes.value{
+            for elem in array{
+                println(elem.title)
+            }
+        }else{
+            println("An error occured")
+        }
+    }
+    
+    /*=================================================== END - TESTS ==================================================================================================*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -24,15 +96,18 @@ class ShowsCollectionViewController: UIViewController, UICollectionViewDelegate,
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return series.count + 1
+        if let list = shows {
+            return list.count
+        }
+        return 2
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionCell", forIndexPath: indexPath) as! SeriesCollectionViewCell
-       
-        cell.loadSerieFromInternet("Pokemon", image: "http://assets20.pokemon.com/static2/_ui/img/chrome/external_link_bumper.png")
-        //cell.loadSeries(series[indexPath.row])
-       
+        if let list = shows{
+            cell.loadSerieFromInternet(list[indexPath.row].title, image: "http://assets20.pokemon.com/static2/_ui/img/chrome/external_link_bumper.png")
+            //cell.loadSeries(series[indexPath.row])
+        }
         return cell
     }
     

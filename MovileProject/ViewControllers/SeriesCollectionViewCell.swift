@@ -14,11 +14,6 @@ class SeriesCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var serieTitle: UILabel!
     
-    func loadSeries(serie: Serie){
-        serieImage.image = UIImage(named: serie.imageName)
-        serieTitle.text = serie.title
-    }
-    
     func loadSerieFromInternet (title: String, image: String){
         let url = NSURL(string: image)
         let data = NSData(contentsOfURL: url!)

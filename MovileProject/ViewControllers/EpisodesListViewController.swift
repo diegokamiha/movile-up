@@ -10,7 +10,6 @@ import UIKit
 
 class EpisodesListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let episodes = Episode.allEpisodes()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +23,13 @@ class EpisodesListViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return episodes.count
+       return 10
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let identifier = Reusable.Cell.identifier!
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! CellTableViewCell
-        cell.loadEpisodes(episodes[indexPath.row])
         return cell
     }
 

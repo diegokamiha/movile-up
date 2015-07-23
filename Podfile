@@ -8,7 +8,7 @@ use_frameworks!
 target 'MovileProject', :exclusive => true do
    pod 'Alamofire'
    pod 'Result'
-   pod 'TraktModels', :git => 'https://github.com/marcelofabri/TraktModels.git'			
+   pod 'TraktModels', :git => 'https://github.com/marcelofabri/TraktModels.git'
 end
 
 target :unit_tests, :exclusive => true do
