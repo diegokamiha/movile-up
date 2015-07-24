@@ -7,14 +7,46 @@
 //
 
 import UIKit
+import TraktModels
 
 class EpisodesListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var listView: UITableView!
+    
+    private var httpClient = TraktHTTPClient()
+    private var episodes: [Episode]?
+    var showSlug: String?
+    
+    func loadSeasons(){
+        if let showId = showSlug{
+            httpClient.getEpisodes(showId, season: 1){ [weak self] result in
+                if let seasons = result.value{
+                    self?.episodes = seasons
+                    self?.listView.reloadData()
+                }else{
+                    println("An error occured \(result.error)")
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loadSeasons()
         // Do any additional setup after loading the view.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue == Segue.EpisodeSegue {
+            if let cell = sender as? UITableViewCell,
+            indexPath = listView.indexPathForCell(cell) {
+                let vc = segue.destinationViewController as! EpisodeDetailsViewController
+                if let list = episodes{
+                    vc.showSlug = showSlug
+                    vc.episode = list[indexPath.row].number
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,13 +55,19 @@ class EpisodesListViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return 10
+        if let list = episodes{
+            return list.count
+        }
+        return 10
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let identifier = Reusable.Cell.identifier!
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! CellTableViewCell
+        if let list = episodes{
+            cell.loadSeason(list[indexPath.row])
+        }
         return cell
     }
 

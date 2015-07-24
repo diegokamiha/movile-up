@@ -181,6 +181,45 @@ extension UITableView {
 //MARK: - CustomNavigationController
 
 //MARK: - ShowsCollectionViewController
+extension UIStoryboardSegue {
+    func selection() -> ShowsCollectionViewController.Segue? {
+        if let identifier = self.identifier {
+            return ShowsCollectionViewController.Segue(rawValue: identifier)
+        }
+        return nil
+    }
+}
+
+extension ShowsCollectionViewController { 
+
+    enum Segue: String, Printable, SegueProtocol {
+        case SeasonsSegue = "SeasonsSegue"
+
+        var kind: SegueKind? {
+            switch (self) {
+            case SeasonsSegue:
+                return SegueKind(rawValue: "show")
+            default:
+                preconditionFailure("Invalid value")
+                break
+            }
+        }
+
+        var destination: UIViewController.Type? {
+            switch (self) {
+            case SeasonsSegue:
+                return EpisodesListViewController.self
+            default:
+                assertionFailure("Unknown destination")
+                return nil
+            }
+        }
+
+        var identifier: String? { return self.description } 
+        var description: String { return self.rawValue }
+    }
+
+}
 extension ShowsCollectionViewController { 
 
     enum Reusable: String, Printable, ReusableViewProtocol {
@@ -213,6 +252,45 @@ extension ShowsCollectionViewController {
 
 
 //MARK: - EpisodesListViewController
+extension UIStoryboardSegue {
+    func selection() -> EpisodesListViewController.Segue? {
+        if let identifier = self.identifier {
+            return EpisodesListViewController.Segue(rawValue: identifier)
+        }
+        return nil
+    }
+}
+
+extension EpisodesListViewController { 
+
+    enum Segue: String, Printable, SegueProtocol {
+        case EpisodeSegue = "EpisodeSegue"
+
+        var kind: SegueKind? {
+            switch (self) {
+            case EpisodeSegue:
+                return SegueKind(rawValue: "show")
+            default:
+                preconditionFailure("Invalid value")
+                break
+            }
+        }
+
+        var destination: UIViewController.Type? {
+            switch (self) {
+            case EpisodeSegue:
+                return EpisodeDetailsViewController.self
+            default:
+                assertionFailure("Unknown destination")
+                return nil
+            }
+        }
+
+        var identifier: String? { return self.description } 
+        var description: String { return self.rawValue }
+    }
+
+}
 extension EpisodesListViewController { 
 
     enum Reusable: String, Printable, ReusableViewProtocol {

@@ -8,6 +8,7 @@ use_frameworks!
 target 'MovileProject', :exclusive => true do
    pod 'Alamofire'
    pod 'Result'
+   pod 'Kingfisher'
    pod 'TraktModels', :git => 'https://github.com/marcelofabri/TraktModels.git'
 end
 

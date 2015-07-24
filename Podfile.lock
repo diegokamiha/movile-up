@@ -2,6 +2,7 @@ PODS:
   - Alamofire (1.2.3)
   - Box (1.2.2)
   - ISO8601DateFormatter (0.7)
+  - Kingfisher (1.4.1)
   - Nimble (1.0.0)
   - OHHTTPStubs (4.0.2)
   - Result (0.4.4):
@@ -11,6 +12,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - Kingfisher
   - Nimble
   - OHHTTPStubs
   - Result
@@ -29,6 +31,7 @@ SPEC CHECKSUMS:
   Alamofire: 5550bf0b575ed1a4bf9be572f9463e1015cc169e
   Box: a92e8aa4c099e6bc0733829665caf9e668ef53b8
   ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
+  Kingfisher: 962a21cdc2a7b0fa63be3b2c45ea6f180feda535
   Nimble: 8bee528e5fcc403653076545db562d2b5db7bb87
   OHHTTPStubs: dbd1957d414659783e07b49c961940b7564c23d9
   Result: b44f6bc8762bbffaf2c5df58f2c7d12c3496ced8

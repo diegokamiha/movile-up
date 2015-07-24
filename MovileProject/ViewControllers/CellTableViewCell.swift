@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TraktModels
 
 class CellTableViewCell: UITableViewCell {
 
@@ -22,5 +23,14 @@ class CellTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func loadSeason(episode: Episode){
+        episodeTitle.text = "Episode: \(episode.number) - Title: \(episode.title!)"
+    }
+    
+    override func prepareForReuse() {
+        episodeTitle.text = ""
+    }
+
     
 }

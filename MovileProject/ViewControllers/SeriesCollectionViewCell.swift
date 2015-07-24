@@ -7,18 +7,31 @@
 //
 
 import UIKit
-
+import TraktModels
+import Kingfisher
+    
 class SeriesCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var serieImage: UIImageView!
     
     @IBOutlet weak var serieTitle: UILabel!
     
-    func loadSerieFromInternet (title: String, image: String){
-        let url = NSURL(string: image)
-        let data = NSData(contentsOfURL: url!)
-        serieImage.image = UIImage(data: data!)
-        
-        serieTitle.text = title
+    private var task: RetrieveImageTask?
+    
+    func loadSerieFromInternet (show: Show){
+        let placeholder = UIImage(named: "poster")
+        if let url = show.poster?.fullImageURL ?? show.poster?.mediumImageURL ?? show.poster?.thumbImageURL {
+            serieImage.kf_setImageWithURL(url, placeholderImage: placeholder)
+        } else {
+            serieImage.image = placeholder
+        }
+        serieTitle.text = show.title
+    }
+    
+    override func prepareForReuse() {
+            super.prepareForReuse()
+            task?.cancel()
+            task = nil
+            serieImage.image = nil
     }
 }

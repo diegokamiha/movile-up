@@ -95,6 +95,18 @@ class ShowsCollectionViewController: UIViewController, UICollectionViewDelegate,
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue == Segue.SeasonsSegue {
+            if let cell = sender as? UICollectionViewCell,
+            indexPath = collectionView.indexPathForCell(cell) {
+                let vc = segue.destinationViewController as! EpisodesListViewController
+                if let list = shows{
+                    vc.showSlug = list[indexPath.row].identifiers.slug
+                }
+            }
+        }
+    }
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let list = shows {
             return list.count
@@ -105,7 +117,7 @@ class ShowsCollectionViewController: UIViewController, UICollectionViewDelegate,
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionCell", forIndexPath: indexPath) as! SeriesCollectionViewCell
         if let list = shows{
-            cell.loadSerieFromInternet(list[indexPath.row].title, image: "http://assets20.pokemon.com/static2/_ui/img/chrome/external_link_bumper.png")
+            cell.loadSerieFromInternet(list[indexPath.row])
             //cell.loadSeries(series[indexPath.row])
         }
         return cell

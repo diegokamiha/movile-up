@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import TraktModels
 
 class EpisodeDetailsViewController: UIViewController {
 
+    private var httpClient = TraktHTTPClient()
+    var showSlug: String?
+    var episode: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadEpisode()
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,6 +32,24 @@ class EpisodeDetailsViewController: UIViewController {
     
     @IBOutlet weak var textEpisode: UITextView!
     
+    @IBOutlet var episodeView: UIView!
+    
+    func loadEpisode(){
+        if let showId = showSlug,
+            episodeNumber = episode{
+                httpClient.getEpisode(showId, season: 1, episodeNumber: episodeNumber){[weak self] result in
+                    if let episode = result.value{
+                        println(episode.title)
+                        println(episode.overview)
+                        self?.titleEpisode.text = episode.title
+                        self?.textEpisode.text = episode.overview
+                    }else{
+                        println("An error occured \(result.error)")
+                    }
+                }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -36,5 +59,5 @@ class EpisodeDetailsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
