@@ -9,6 +9,8 @@ target 'MovileProject', :exclusive => true do
    pod 'Alamofire'
    pod 'Result'
    pod 'Kingfisher'
+   pod 'FloatRatingView', :git => 'https://github.com/strekfus/FloatRatingView.git'
+   pod 'BorderedView'
    pod 'TraktModels', :git => 'https://github.com/marcelofabri/TraktModels.git'
 end
 

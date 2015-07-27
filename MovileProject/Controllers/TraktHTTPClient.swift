@@ -47,13 +47,13 @@ class TraktHTTPClient {
                 case .Show(let id):
                     return ("shows/\(id)", ["extended": "images,full"], .GET)
                 case .Episode(let show, let season, let episode):
-                    return ("shows/\(show)/seasons/\(season)/episodes/\(episode)", ["extended": "images, full"], .GET)
+                    return ("shows/\(show)/seasons/\(season)/episodes/\(episode)", ["extended": "images,full"], .GET)
                 case .PopularShows:
-                    return ("shows/popular", ["extended": "images, full"], .GET)
+                    return ("shows/popular", ["extended": "images,full"], .GET)
                 case .Seasons(let showId):
-                    return ("shows/\(showId)/seasons", ["extended": "images, full"], .GET)
+                    return ("shows/\(showId)/seasons", ["extended": "images,full"], .GET)
                 case .Episodes(let showId, let seasonId):
-                    return ("shows/\(showId)/seasons/\(seasonId)/episodes", ["extended": "images, full"], .GET)
+                    return ("shows/\(showId)/seasons/\(seasonId)/episodes",["": ""], .GET)
                 }
                                 }()
             let URL = NSURL(string: Router.baseURLString)!

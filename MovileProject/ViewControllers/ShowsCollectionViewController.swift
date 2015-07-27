@@ -99,7 +99,7 @@ class ShowsCollectionViewController: UIViewController, UICollectionViewDelegate,
         if segue == Segue.SeasonsSegue {
             if let cell = sender as? UICollectionViewCell,
             indexPath = collectionView.indexPathForCell(cell) {
-                let vc = segue.destinationViewController as! EpisodesListViewController
+                let vc = segue.destinationViewController as! SeasonsViewController
                 if let list = shows{
                     vc.showSlug = list[indexPath.row].identifiers.slug
                 }

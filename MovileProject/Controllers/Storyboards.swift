@@ -208,7 +208,7 @@ extension ShowsCollectionViewController {
         var destination: UIViewController.Type? {
             switch (self) {
             case SeasonsSegue:
-                return EpisodesListViewController.self
+                return SeasonsViewController.self
             default:
                 assertionFailure("Unknown destination")
                 return nil
@@ -239,6 +239,77 @@ extension ShowsCollectionViewController {
             switch (self) {
             case CollectionCell:
                 return SeriesCollectionViewCell.self
+            default:
+                return nil
+            }
+        }
+
+        var identifier: String? { return self.description } 
+        var description: String { return self.rawValue }
+    }
+
+}
+
+
+//MARK: - SeasonsViewController
+extension UIStoryboardSegue {
+    func selection() -> SeasonsViewController.Segue? {
+        if let identifier = self.identifier {
+            return SeasonsViewController.Segue(rawValue: identifier)
+        }
+        return nil
+    }
+}
+
+extension SeasonsViewController { 
+
+    enum Segue: String, Printable, SegueProtocol {
+        case EpisodesSegue = "EpisodesSegue"
+
+        var kind: SegueKind? {
+            switch (self) {
+            case EpisodesSegue:
+                return SegueKind(rawValue: "show")
+            default:
+                preconditionFailure("Invalid value")
+                break
+            }
+        }
+
+        var destination: UIViewController.Type? {
+            switch (self) {
+            case EpisodesSegue:
+                return EpisodesListViewController.self
+            default:
+                assertionFailure("Unknown destination")
+                return nil
+            }
+        }
+
+        var identifier: String? { return self.description } 
+        var description: String { return self.rawValue }
+    }
+
+}
+extension SeasonsViewController { 
+
+    enum Reusable: String, Printable, ReusableViewProtocol {
+        case seasonCell = "seasonCell"
+
+        var kind: ReusableKind? {
+            switch (self) {
+            case seasonCell:
+                return ReusableKind(rawValue: "tableViewCell")
+            default:
+                preconditionFailure("Invalid value")
+                break
+            }
+        }
+
+        var viewType: UIView.Type? {
+            switch (self) {
+            case seasonCell:
+                return SeasonTableViewCell.self
             default:
                 return nil
             }

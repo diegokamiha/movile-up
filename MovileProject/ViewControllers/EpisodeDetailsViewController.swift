@@ -8,6 +8,7 @@
 
 import UIKit
 import TraktModels
+import Kingfisher
 
 class EpisodeDetailsViewController: UIViewController {
 
@@ -39,10 +40,16 @@ class EpisodeDetailsViewController: UIViewController {
             episodeNumber = episode{
                 httpClient.getEpisode(showId, season: 1, episodeNumber: episodeNumber){[weak self] result in
                     if let episode = result.value{
-                        println(episode.title)
-                        println(episode.overview)
                         self?.titleEpisode.text = episode.title
                         self?.textEpisode.text = episode.overview
+                        
+                        /*Setting image*/
+                        let placeholder = UIImage(named: "poster")
+                        if let url = episode.screenshot?.fullImageURL ?? episode.screenshot?.mediumImageURL ?? episode.screenshot?.thumbImageURL {
+                            self?.imageEpisode.kf_setImageWithURL(url, placeholderImage: placeholder)
+                        } else {
+                            self?.imageEpisode.image = placeholder
+                        }
                     }else{
                         println("An error occured \(result.error)")
                     }

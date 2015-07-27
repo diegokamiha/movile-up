@@ -15,6 +15,8 @@
 		8148E6991B582DD9002A8C83 /* EpisodeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8148E6981B582DD9002A8C83 /* EpisodeDetailsViewController.swift */; };
 		8148E69F1B5838B7002A8C83 /* EpisodesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8148E69E1B5838B7002A8C83 /* EpisodesListViewController.swift */; };
 		8148E6A11B5843F3002A8C83 /* CellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8148E6A01B5843F3002A8C83 /* CellTableViewCell.swift */; };
+		814AB1B61B66A5FB002183EB /* SeasonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814AB1B51B66A5FB002183EB /* SeasonsViewController.swift */; };
+		814AB1B81B66B123002183EB /* SeasonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814AB1B71B66B123002183EB /* SeasonTableViewCell.swift */; };
 		814DDC0A1B59746B0086A57B /* ShowsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814DDC091B59746B0086A57B /* ShowsCollectionViewController.swift */; };
 		814DDC121B5988730086A57B /* SeriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814DDC111B5988730086A57B /* SeriesCollectionViewCell.swift */; };
 		A2AE65B67E746A58215B4755 /* Main.storyboard in Sources */ = {isa = PBXBuildFile; fileRef = 268BAB02CBF572DE3BB3357E /* Main.storyboard */; };
@@ -49,6 +51,8 @@
 		8148E6981B582DD9002A8C83 /* EpisodeDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsViewController.swift; sourceTree = "<group>"; };
 		8148E69E1B5838B7002A8C83 /* EpisodesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodesListViewController.swift; sourceTree = "<group>"; };
 		8148E6A01B5843F3002A8C83 /* CellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellTableViewCell.swift; sourceTree = "<group>"; };
+		814AB1B51B66A5FB002183EB /* SeasonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeasonsViewController.swift; sourceTree = "<group>"; };
+		814AB1B71B66B123002183EB /* SeasonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeasonTableViewCell.swift; sourceTree = "<group>"; };
 		814DDC091B59746B0086A57B /* ShowsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowsCollectionViewController.swift; sourceTree = "<group>"; };
 		814DDC111B5988730086A57B /* SeriesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		89A7E65335B1D37A6ABC32CB /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +121,8 @@
 				8148E6A01B5843F3002A8C83 /* CellTableViewCell.swift */,
 				814DDC091B59746B0086A57B /* ShowsCollectionViewController.swift */,
 				814DDC111B5988730086A57B /* SeriesCollectionViewCell.swift */,
+				814AB1B51B66A5FB002183EB /* SeasonsViewController.swift */,
+				814AB1B71B66B123002183EB /* SeasonTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -510,8 +516,10 @@
 				F186146D7EB2EE4CCD0D45F5 /* Storyboards.swift in Sources */,
 				814DDC121B5988730086A57B /* SeriesCollectionViewCell.swift in Sources */,
 				814DDC0A1B59746B0086A57B /* ShowsCollectionViewController.swift in Sources */,
+				814AB1B61B66A5FB002183EB /* SeasonsViewController.swift in Sources */,
 				A2AE65B67E746A58215B4755 /* Main.storyboard in Sources */,
 				8148E69F1B5838B7002A8C83 /* EpisodesListViewController.swift in Sources */,
+				814AB1B81B66B123002183EB /* SeasonTableViewCell.swift in Sources */,
 				8148E6A11B5843F3002A8C83 /* CellTableViewCell.swift in Sources */,
 				AF21D621DC9C9BB34BF22D01 /* LaunchScreen.xib in Sources */,
 				814845FA1B600D4900A20475 /* TraktHTTPClient.swift in Sources */,

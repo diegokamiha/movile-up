@@ -1,6 +1,8 @@
 PODS:
   - Alamofire (1.2.3)
+  - BorderedView (0.1.0)
   - Box (1.2.2)
+  - FloatRatingView (1.0.0)
   - ISO8601DateFormatter (0.7)
   - Kingfisher (1.4.1)
   - Nimble (1.0.0)
@@ -12,6 +14,8 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - BorderedView
+  - FloatRatingView (from `https://github.com/strekfus/FloatRatingView.git`)
   - Kingfisher
   - Nimble
   - OHHTTPStubs
@@ -19,17 +23,24 @@ DEPENDENCIES:
   - TraktModels (from `https://github.com/marcelofabri/TraktModels.git`)
 
 EXTERNAL SOURCES:
+  FloatRatingView:
+    :git: https://github.com/strekfus/FloatRatingView.git
   TraktModels:
     :git: https://github.com/marcelofabri/TraktModels.git
 
 CHECKOUT OPTIONS:
+  FloatRatingView:
+    :commit: fc30e564fa0f8e5f0ac70f42649f6a6e040c25e4
+    :git: https://github.com/strekfus/FloatRatingView.git
   TraktModels:
     :commit: 4f0b767a43e110a2b590df5921dd87e63ac21b13
     :git: https://github.com/marcelofabri/TraktModels.git
 
 SPEC CHECKSUMS:
   Alamofire: 5550bf0b575ed1a4bf9be572f9463e1015cc169e
+  BorderedView: d5a4373310d6c7c0fa922eade7ca13672541dad8
   Box: a92e8aa4c099e6bc0733829665caf9e668ef53b8
+  FloatRatingView: 6b1a1431432cb7db33cebf6f96929c738cccb84f
   ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
   Kingfisher: 962a21cdc2a7b0fa63be3b2c45ea6f180feda535
   Nimble: 8bee528e5fcc403653076545db562d2b5db7bb87
