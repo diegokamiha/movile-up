@@ -12,10 +12,17 @@ import TraktModels
 class SeasonsViewController: UITableViewController {
 
     @IBOutlet var listView: UITableView!
+
+    @IBOutlet weak var favoriteButton: UIBarButtonItem!
     
     var showSlug: String?
+    var serieTitle: String?
+    var traktId: Int?
+    
     private var seasons: [Season]?
     private var httpClient = TraktHTTPClient()
+    
+    @IBOutlet weak var showTitle: UINavigationItem!
     
     func loadSeasons(){
         if let showId = showSlug {
@@ -29,10 +36,27 @@ class SeasonsViewController: UITableViewController {
             }
         }
     }
+    func isFavorite() -> Bool{
+        var fm = FavoritesManager()
+        for id in fm.favoritesIdentifiers {
+            if id == traktId {
+                return true
+            }
+        }
+        return false
+    }
     
      override func viewDidLoad() {
         super.viewDidLoad()
         loadSeasons()
+        if isFavorite() {
+            favoriteButton.tintColor = UIColor.redColor()
+        }
+        showTitle.title = serieTitle
+        let fm = FavoritesManager()
+        for id in fm.favoritesIdentifiers {
+            println("id \(id)")
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -65,6 +89,20 @@ class SeasonsViewController: UITableViewController {
         return cell
     }
     
+    @IBAction func favorite(sender: UIBarButtonItem) {
+        if let id = traktId {
+            let fm = FavoritesManager()
+            if !isFavorite(){
+                fm.addIdentifier(id)
+                favoriteButton.tintColor = UIColor.redColor()
+            }else{
+                fm.removeIdentifier(id)
+                favoriteButton.tintColor = UIColor.whiteColor()
+            }
+        }else {
+            println("An error occured")
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.

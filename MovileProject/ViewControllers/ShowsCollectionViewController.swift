@@ -15,8 +15,11 @@ class ShowsCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     private var httpClient = TraktHTTPClient()
     private var shows: [Show]?
+    private var favorites: [Show]?
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var showTabs: UISegmentedControl!
     
     func loadShows(){
         httpClient.getPopularShows{ [weak self] result in
@@ -28,16 +31,18 @@ class ShowsCollectionViewController: UIViewController, UICollectionViewDelegate,
             }
         }
     }
+    
+    var selectedShows: [Show]? {
+        if showTabs.selectedSegmentIndex == 0 {
+            return shows
+        }else {
+            return favorites
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         loadShows()
-        /*httpClient.getShow("game-of-thrones", completion: printShow)
-        httpClient.getEpisode("game-of-thrones", season: 1, episodeNumber: 1, completion: printEpisode)
-        httpClient.getPopularShows(printPopularShows)
-        httpClient.getSeasons("game-of-thrones", completion: printSeasons)
-        httpClient.getEpisodes("game-of-thrones", season: 1, completion: printEpisodes)*/
-        // Do any additional setup after loading the view.
     }
     
     /*===================================================   BEGIN - TESTS ==============================================================================================*/
@@ -102,13 +107,15 @@ class ShowsCollectionViewController: UIViewController, UICollectionViewDelegate,
                 let vc = segue.destinationViewController as! SeasonsViewController
                 if let list = shows{
                     vc.showSlug = list[indexPath.row].identifiers.slug
+                    vc.serieTitle = list[indexPath.row].title
+                    vc.traktId = list[indexPath.row].identifiers.trakt
                 }
             }
         }
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let list = shows {
+        if let list = selectedShows {
             return list.count
         }
         return 2
@@ -116,7 +123,7 @@ class ShowsCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionCell", forIndexPath: indexPath) as! SeriesCollectionViewCell
-        if let list = shows{
+        if let list = selectedShows{
             cell.loadSerieFromInternet(list[indexPath.row])
             //cell.loadSeries(series[indexPath.row])
         }
@@ -135,6 +142,9 @@ class ShowsCollectionViewController: UIViewController, UICollectionViewDelegate,
         return UIEdgeInsets(top: flowLayout.sectionInset.top, left: space, bottom: flowLayout.sectionInset.bottom, right: space)
     }
     
+    @IBAction func tabsChanged(sender: UISegmentedControl) {
+        self.collectionView.reloadData()
+    }
     /*
     // MARK: - Navigation
 

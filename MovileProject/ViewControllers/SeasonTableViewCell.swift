@@ -9,12 +9,14 @@
 import UIKit
 import TraktModels
 import Kingfisher
+import FloatRatingView
 
 class SeasonTableViewCell: UITableViewCell {
 
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var numberOfEpisodes: UILabel!
     
+    @IBOutlet weak var ratingView: FloatRatingView!
     @IBOutlet weak var seasonImage: UIImageView!
     
     override func awakeFromNib() {
@@ -39,5 +41,6 @@ class SeasonTableViewCell: UITableViewCell {
 
         title.text = "Season \(season.number)"
         numberOfEpisodes.text = "\(season.episodeCount!) episodes"
+        ratingView.rating = season.rating!
     }
 }

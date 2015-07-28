@@ -10,6 +10,7 @@
 		0979B4BEDE818C66DC851395 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA675CCDCD3BF53C64512F27 /* AppDelegate.swift */; };
 		740E9A452191C3FE04385F3A /* Pods_MovileProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACFBE77A111D70C46A1843F6 /* Pods_MovileProject.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		75382CFCF8250B8A9FF010E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C8CAA8F2873B034231212E /* Foundation.framework */; };
+		81426E0C1B67F54100091034 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81426E0B1B67F54100091034 /* FavoritesManager.swift */; };
 		814292CF1B56EA6B00902F7A /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814292CE1B56EA6B00902F7A /* CustomNavigationController.swift */; };
 		814845FA1B600D4900A20475 /* TraktHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814845F91B600D4900A20475 /* TraktHTTPClient.swift */; };
 		8148E6991B582DD9002A8C83 /* EpisodeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8148E6981B582DD9002A8C83 /* EpisodeDetailsViewController.swift */; };
@@ -46,6 +47,7 @@
 		437A841C10B5BD69E83F1911 /* MovileProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovileProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C8CAA8F2873B034231212E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		67CA4A0039672E184DB86B19 /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		81426E0B1B67F54100091034 /* FavoritesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		814292CE1B56EA6B00902F7A /* CustomNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		814845F91B600D4900A20475 /* TraktHTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraktHTTPClient.swift; sourceTree = "<group>"; };
 		8148E6981B582DD9002A8C83 /* EpisodeDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 		D8DE972C174C229CB9BBB954 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				81426E0B1B67F54100091034 /* FavoritesManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				0979B4BEDE818C66DC851395 /* AppDelegate.swift in Sources */,
 				814292CF1B56EA6B00902F7A /* CustomNavigationController.swift in Sources */,
 				F186146D7EB2EE4CCD0D45F5 /* Storyboards.swift in Sources */,
+				81426E0C1B67F54100091034 /* FavoritesManager.swift in Sources */,
 				814DDC121B5988730086A57B /* SeriesCollectionViewCell.swift in Sources */,
 				814DDC0A1B59746B0086A57B /* ShowsCollectionViewController.swift in Sources */,
 				814AB1B61B66A5FB002183EB /* SeasonsViewController.swift in Sources */,
