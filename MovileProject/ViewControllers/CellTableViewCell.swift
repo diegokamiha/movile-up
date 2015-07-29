@@ -13,6 +13,8 @@ class CellTableViewCell: UITableViewCell {
 
     @IBOutlet weak var episodeTitle: UILabel!
     
+    @IBOutlet weak var episodeInfo: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,7 +27,10 @@ class CellTableViewCell: UITableViewCell {
     }
     
     func loadSeason(episode: Episode){
-        episodeTitle.text = "Episode: \(episode.number) - Title: \(episode.title!)"
+        if let title = episode.title{
+            episodeInfo.text = "S0\(episode.seasonNumber)E0\(episode.number)"
+            episodeTitle.text = "\(title)"
+        }
     }
     
     override func prepareForReuse() {

@@ -30,6 +30,10 @@ class FavoritesManager {
         }
     }
     
+    var favoritesChangedNotificationName: String{
+        return "favoritesChangedNotification"
+    }
+    
     func addIdentifier(identifier: Int) {
         var ids = self.favoritesIdentifiers
                 ids.insert(identifier)

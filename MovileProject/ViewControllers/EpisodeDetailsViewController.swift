@@ -15,6 +15,7 @@ class EpisodeDetailsViewController: UIViewController {
     private var httpClient = TraktHTTPClient()
     var showSlug: String?
     var episode: Int?
+    var season: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,10 +36,15 @@ class EpisodeDetailsViewController: UIViewController {
     
     @IBOutlet var episodeView: UIView!
     
+    deinit{
+        println("\(self.dynamicType) deinit")
+    }
+    
     func loadEpisode(){
         if let showId = showSlug,
+            seasonNumber = season,
             episodeNumber = episode{
-                httpClient.getEpisode(showId, season: 1, episodeNumber: episodeNumber){[weak self] result in
+                httpClient.getEpisode(showId, season: seasonNumber, episodeNumber: episodeNumber){[weak self] result in
                     if let episode = result.value{
                         self?.titleEpisode.text = episode.title
                         self?.textEpisode.text = episode.overview

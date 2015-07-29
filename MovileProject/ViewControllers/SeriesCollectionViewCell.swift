@@ -33,5 +33,6 @@ class SeriesCollectionViewCell: UICollectionViewCell {
             task?.cancel()
             task = nil
             serieImage.image = nil
+            serieTitle.text = ""
     }
 }

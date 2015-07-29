@@ -16,6 +16,7 @@ class ShowsCollectionViewController: UIViewController, UICollectionViewDelegate,
     private var httpClient = TraktHTTPClient()
     private var shows: [Show]?
     private var favorites: [Show]?
+    private var fm = FavoritesManager()
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -32,68 +33,49 @@ class ShowsCollectionViewController: UIViewController, UICollectionViewDelegate,
         }
     }
     
+    func updateFavorite(){
+        favorites = shows?.filter(serieIsFavorite)
+        self.collectionView.reloadData()
+    }
+    
+    func serieIsFavorite(serie: Show) -> Bool {
+        for id in fm.favoritesIdentifiers {
+                if id == serie.identifiers.trakt{
+                    return true
+                }
+            }
+        return false
+    }
+    
     var selectedShows: [Show]? {
         if showTabs.selectedSegmentIndex == 0 {
             return shows
-        }else {
+        }else if showTabs.selectedSegmentIndex == 1{
             return favorites
         }
+        return nil
     }
-
+    
+    func listenNotification(){
+        let name = fm.favoritesChangedNotificationName
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        
+        notificationCenter.addObserver(self, selector: "updateFavorite", name: name, object: nil)
+    }
+    
+    deinit{
+        let name = fm.favoritesChangedNotificationName
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.removeObserver(self, name: name, object: nil)
+        println("\(self.dynamicType) deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadShows()
+        updateFavorite()
+        listenNotification()
     }
-    
-    /*===================================================   BEGIN - TESTS ==============================================================================================*/
-    
-    func printShow(show: Result<Show, NSError?>) -> Void{
-        if let rShow = show.value{
-            println(rShow.title)
-        }else{
-            println("An error occured")
-        }
-    }
-    
-    func printEpisode(episode: Result<Episode, NSError?>) -> Void{
-        if let rEpisode = episode.value{
-            println(rEpisode.title)
-        }else{
-            println("An error occured")
-        }
-    }
-    
-    func printPopularShows(popularShows: Result<[Show], NSError?>) -> Void{
-        if let array =  popularShows.value{
-            for elem in array {
-                println(elem.title)
-            }
-        }else{
-            println("An error occured")
-        }
-    }
-    
-    func printSeasons(seasons: Result<[Season], NSError?>) -> Void{
-        if let array = seasons.value{
-            for elem in array {
-                println(elem.number)
-            }
-        }else{
-            println("An error occured")
-        }
-    }
-    
-    func printEpisodes(episodes: Result<[Episode], NSError?>) -> Void {
-        if let array = episodes.value{
-            for elem in array{
-                println(elem.title)
-            }
-        }else{
-            println("An error occured")
-        }
-    }
-    
-    /*=================================================== END - TESTS ==================================================================================================*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -101,11 +83,12 @@ class ShowsCollectionViewController: UIViewController, UICollectionViewDelegate,
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+       
         if segue == Segue.SeasonsSegue {
             if let cell = sender as? UICollectionViewCell,
             indexPath = collectionView.indexPathForCell(cell) {
                 let vc = segue.destinationViewController as! SeasonsViewController
-                if let list = shows{
+                if let list = selectedShows{
                     vc.showSlug = list[indexPath.row].identifiers.slug
                     vc.serieTitle = list[indexPath.row].title
                     vc.traktId = list[indexPath.row].identifiers.trakt
@@ -115,17 +98,18 @@ class ShowsCollectionViewController: UIViewController, UICollectionViewDelegate,
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         if let list = selectedShows {
             return list.count
         }
-        return 2
+        return 0
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionCell", forIndexPath: indexPath) as! SeriesCollectionViewCell
         if let list = selectedShows{
             cell.loadSerieFromInternet(list[indexPath.row])
-            //cell.loadSeries(series[indexPath.row])
         }
         return cell
     }
@@ -143,7 +127,7 @@ class ShowsCollectionViewController: UIViewController, UICollectionViewDelegate,
     }
     
     @IBAction func tabsChanged(sender: UISegmentedControl) {
-        self.collectionView.reloadData()
+        updateFavorite()
     }
     /*
     // MARK: - Navigation

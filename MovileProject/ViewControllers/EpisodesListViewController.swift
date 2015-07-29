@@ -16,10 +16,12 @@ class EpisodesListViewController: UIViewController, UITableViewDelegate, UITable
     private var httpClient = TraktHTTPClient()
     private var episodes: [Episode]?
     var showSlug: String?
+    var season: Int?
     
     func loadSeasons(){
-        if let showId = showSlug{
-            httpClient.getEpisodes(showId, season: 1){ [weak self] result in
+        if let showId = showSlug,
+            let seasonNumber = season{
+            httpClient.getEpisodes(showId, season: seasonNumber){ [weak self] result in
                 if let seasons = result.value{
                     self?.episodes = seasons
                     self?.listView.reloadData()
@@ -27,6 +29,17 @@ class EpisodesListViewController: UIViewController, UITableViewDelegate, UITable
                     println("An error occured \(result.error)")
                 }
             }
+        }
+    }
+    
+    deinit{
+        println("\(self.dynamicType) deinit")
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if let index = listView.indexPathForSelectedRow(){
+            listView.deselectRowAtIndexPath(index, animated: true)
         }
     }
     
@@ -43,6 +56,7 @@ class EpisodesListViewController: UIViewController, UITableViewDelegate, UITable
                 let vc = segue.destinationViewController as! EpisodeDetailsViewController
                 if let list = episodes{
                     vc.showSlug = showSlug
+                    vc.season = season
                     vc.episode = list[indexPath.row].number
                 }
             }
@@ -58,7 +72,7 @@ class EpisodesListViewController: UIViewController, UITableViewDelegate, UITable
         if let list = episodes{
             return list.count
         }
-        return 10
+        return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -84,3 +98,4 @@ class EpisodesListViewController: UIViewController, UITableViewDelegate, UITable
     */
 
 }
+
