@@ -9,6 +9,7 @@
 import UIKit
 import TraktModels
 
+
 class SeasonsViewController: UITableViewController {
 
     @IBOutlet var listView: UITableView!
@@ -70,7 +71,7 @@ class SeasonsViewController: UITableViewController {
                     let vc = segue.destinationViewController as! EpisodesListViewController
                     if let list = seasons{
                         vc.showSlug = showSlug
-                        vc.season = list[indexPath.row].number
+                        vc.season = list[indexPath.row]
                     }
             }
         }
@@ -107,6 +108,7 @@ class SeasonsViewController: UITableViewController {
         }else {
             println("An error occured")
         }
+        
         let name = fm.favoritesChangedNotificationName
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.postNotificationName(name, object: self)

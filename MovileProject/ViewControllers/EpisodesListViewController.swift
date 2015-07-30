@@ -8,6 +8,7 @@
 
 import UIKit
 import TraktModels
+import Kingfisher
 
 class EpisodesListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -15,19 +16,37 @@ class EpisodesListViewController: UIViewController, UITableViewDelegate, UITable
     
     private var httpClient = TraktHTTPClient()
     private var episodes: [Episode]?
-    var showSlug: String?
-    var season: Int?
     
-    func loadSeasons(){
+    @IBOutlet weak var seasonImage: UIImageView!
+    
+    @IBOutlet weak var seasonTitle: UILabel!
+    
+    var season: Season?
+    
+    var showSlug: String?
+    
+    func loadEpisodes(){
         if let showId = showSlug,
-            let seasonNumber = season{
-            httpClient.getEpisodes(showId, season: seasonNumber){ [weak self] result in
+            let seasonObj = season{
+            httpClient.getEpisodes(showId, season: seasonObj.number){ [weak self] result in
                 if let seasons = result.value{
                     self?.episodes = seasons
                     self?.listView.reloadData()
                 }else{
                     println("An error occured \(result.error)")
                 }
+            }
+        }
+    }
+    
+    func loadSeasonHeader(){
+        let placeholder = UIImage(named: "poster")
+        if let seasonObj = season{
+            if let url = seasonObj.poster?.fullImageURL ?? seasonObj.poster?.mediumImageURL ?? seasonObj.poster?.thumbImageURL {
+                seasonImage.kf_setImageWithURL(url, placeholderImage: placeholder)
+                seasonTitle.text = "Season \(seasonObj.number)"
+            } else {
+                seasonImage.image = placeholder
             }
         }
     }
@@ -45,7 +64,8 @@ class EpisodesListViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadSeasons()
+        loadEpisodes()
+        loadSeasonHeader()
         // Do any additional setup after loading the view.
     }
     
@@ -54,10 +74,11 @@ class EpisodesListViewController: UIViewController, UITableViewDelegate, UITable
             if let cell = sender as? UITableViewCell,
             indexPath = listView.indexPathForCell(cell) {
                 let vc = segue.destinationViewController as! EpisodeDetailsViewController
-                if let list = episodes{
-                    vc.showSlug = showSlug
-                    vc.season = season
-                    vc.episode = list[indexPath.row].number
+                if let list = episodes,
+                    let seasonObj = season{
+                        vc.showSlug = showSlug
+                        vc.season = seasonObj.number
+                        vc.episode = list[indexPath.row].number
                 }
             }
         }

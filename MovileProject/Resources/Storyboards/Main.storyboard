@@ -15,17 +15,50 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="mok-Be-uuz" kind="relationship" relationship="rootViewController" id="xtU-Bp-bNV"/>
+                        <segue destination="Fp5-fO-ncd" kind="relationship" relationship="rootViewController" id="Jie-hg-HcH"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uBJ-RY-32b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="410" y="542"/>
+            <point key="canvasLocation" x="-195" y="591"/>
         </scene>
-        <!--Shows-->
+        <!--Splash Screen View Controller-->
+        <scene sceneID="HMW-xE-Ys0">
+            <objects>
+                <viewController id="Fp5-fO-ncd" customClass="SplashScreenViewController" customModule="MovileProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="k4J-HD-D2T"/>
+                        <viewControllerLayoutGuide type="bottom" id="8gu-Oc-6Eq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="s7d-CY-PWq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iphone4" translatesAutoresizingMaskIntoConstraints="NO" id="GEZ-dD-BkW">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="GEZ-dD-BkW" secondAttribute="trailing" id="3v9-2w-OJK"/>
+                            <constraint firstItem="GEZ-dD-BkW" firstAttribute="leading" secondItem="s7d-CY-PWq" secondAttribute="leading" id="51x-0m-ygc"/>
+                            <constraint firstItem="GEZ-dD-BkW" firstAttribute="top" secondItem="s7d-CY-PWq" secondAttribute="top" id="Heh-xK-ep8"/>
+                            <constraint firstItem="8gu-Oc-6Eq" firstAttribute="top" secondItem="GEZ-dD-BkW" secondAttribute="bottom" id="uXV-Ye-qUH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="s2r-vG-nTq"/>
+                    <connections>
+                        <segue destination="mok-Be-uuz" kind="show" identifier="shows" id="1zX-UC-kWy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3um-Vd-LzI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="236" y="581"/>
+        </scene>
+        <!--shows-->
         <scene sceneID="Ck8-B1-fHW">
             <objects>
-                <viewController id="mok-Be-uuz" customClass="ShowsCollectionViewController" customModule="MovileProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="shows" id="mok-Be-uuz" customClass="ShowsCollectionViewController" customModule="MovileProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NeS-R2-2xa"/>
                         <viewControllerLayoutGuide type="bottom" id="IkS-8Y-m9x"/>
@@ -132,7 +165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BNd-du-MZn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="801" y="542"/>
+            <point key="canvasLocation" x="647" y="581"/>
         </scene>
         <!--Seasons-->
         <scene sceneID="neO-3i-gsU">
@@ -259,7 +292,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AwH-FA-zlP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1206" y="554"/>
+            <point key="canvasLocation" x="1230" y="524"/>
         </scene>
         <!--Episodes-->
         <scene sceneID="t7k-Xh-xKI">
@@ -273,8 +306,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="qFP-Kb-7Wx">
+                                <rect key="frame" x="0.0" y="20" width="320" height="200"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-overlay" translatesAutoresizingMaskIntoConstraints="NO" id="fK3-Si-cVa">
+                                <rect key="frame" x="0.0" y="20" width="320" height="200"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ew2-x9-d0F">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                                <rect key="frame" x="0.0" y="266" width="320" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="cLH-0b-FRv" customClass="CellTableViewCell" customModule="MovileProject" customModuleProvider="target">
@@ -318,23 +357,48 @@
                                     <outlet property="delegate" destination="dXE-TP-rVT" id="gok-pH-ucy"/>
                                 </connections>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JmS-3a-XGK">
+                                <rect key="frame" x="16" y="50" width="40" height="54"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbZ-M7-SbP">
+                                <rect key="frame" x="125" y="83" width="124" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="yZS-0o-pkk" firstAttribute="top" secondItem="ew2-x9-d0F" secondAttribute="bottom" id="0hM-Xq-CtV"/>
-                            <constraint firstItem="ew2-x9-d0F" firstAttribute="top" secondItem="85C-5a-pvq" secondAttribute="top" id="U8x-TJ-iiq"/>
+                            <constraint firstAttribute="bottom" secondItem="ew2-x9-d0F" secondAttribute="bottom" constant="2" id="8EN-oQ-JNK"/>
+                            <constraint firstAttribute="trailing" secondItem="fK3-Si-cVa" secondAttribute="trailing" id="8v1-Ul-YYP"/>
+                            <constraint firstItem="JmS-3a-XGK" firstAttribute="leading" secondItem="85C-5a-pvq" secondAttribute="leading" constant="16" id="CLk-O1-JNl"/>
+                            <constraint firstItem="yZS-0o-pkk" firstAttribute="top" secondItem="hbZ-M7-SbP" secondAttribute="bottom" constant="420" id="CTZ-rb-bzU"/>
+                            <constraint firstAttribute="trailing" secondItem="hbZ-M7-SbP" secondAttribute="trailing" constant="71" id="Crs-2D-CWI"/>
+                            <constraint firstItem="yZS-0o-pkk" firstAttribute="top" secondItem="JmS-3a-XGK" secondAttribute="bottom" constant="420" id="JW7-HJ-qXa"/>
+                            <constraint firstItem="qFP-Kb-7Wx" firstAttribute="top" secondItem="mBH-rx-juc" secondAttribute="bottom" id="SBq-ZI-cnb"/>
+                            <constraint firstItem="ew2-x9-d0F" firstAttribute="top" secondItem="85C-5a-pvq" secondAttribute="top" constant="266" id="U8x-TJ-iiq"/>
+                            <constraint firstAttribute="trailing" secondItem="qFP-Kb-7Wx" secondAttribute="trailing" id="Y6E-l0-QSC"/>
+                            <constraint firstItem="JmS-3a-XGK" firstAttribute="top" secondItem="mBH-rx-juc" secondAttribute="bottom" constant="30" id="cFI-au-GCi"/>
                             <constraint firstAttribute="trailing" secondItem="ew2-x9-d0F" secondAttribute="trailing" id="e5F-hs-N5Y"/>
+                            <constraint firstItem="hbZ-M7-SbP" firstAttribute="top" secondItem="mBH-rx-juc" secondAttribute="bottom" constant="63" id="jzn-Xc-RLK"/>
+                            <constraint firstItem="hbZ-M7-SbP" firstAttribute="leading" secondItem="85C-5a-pvq" secondAttribute="leading" constant="125" id="kXf-j0-13j"/>
+                            <constraint firstAttribute="trailing" secondItem="JmS-3a-XGK" secondAttribute="trailing" constant="264" id="lNv-Xh-gQi"/>
+                            <constraint firstItem="qFP-Kb-7Wx" firstAttribute="leading" secondItem="85C-5a-pvq" secondAttribute="leading" id="pjw-ko-q0X"/>
                             <constraint firstItem="ew2-x9-d0F" firstAttribute="leading" secondItem="85C-5a-pvq" secondAttribute="leading" id="v2I-p6-m7p"/>
+                            <constraint firstItem="fK3-Si-cVa" firstAttribute="top" secondItem="mBH-rx-juc" secondAttribute="bottom" id="vZG-l3-hEr"/>
+                            <constraint firstItem="fK3-Si-cVa" firstAttribute="leading" secondItem="85C-5a-pvq" secondAttribute="leading" id="za9-Og-uRr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Episodes" id="Mat-Hd-yMj"/>
                     <connections>
                         <outlet property="listView" destination="ew2-x9-d0F" id="AzZ-J0-K9I"/>
+                        <outlet property="seasonImage" destination="JmS-3a-XGK" id="JJo-VW-cgW"/>
+                        <outlet property="seasonTitle" destination="hbZ-M7-SbP" id="D2z-no-5oY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UoW-VJ-6ja" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1624" y="549"/>
+            <point key="canvasLocation" x="1670" y="488"/>
         </scene>
         <!--Episode-->
         <scene sceneID="3dJ-9W-lX6">
@@ -358,7 +422,7 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="200"/>
                                 <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0g-Ws-K8z">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0g-Ws-K8z">
                                 <rect key="frame" x="16" y="228" width="254" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.60326667180000004" blue="0.18387052249999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -401,6 +465,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bg" width="320" height="200"/>
+        <image name="bg-overlay" width="320" height="200"/>
+        <image name="iphone4" width="320" height="480"/>
         <image name="like-heart-on" width="34" height="30"/>
         <image name="poster" width="96" height="139"/>
         <image name="star-gray" width="10" height="10"/>

@@ -180,6 +180,47 @@ extension UITableView {
 
 //MARK: - CustomNavigationController
 
+//MARK: - SplashScreenViewController
+extension UIStoryboardSegue {
+    func selection() -> SplashScreenViewController.Segue? {
+        if let identifier = self.identifier {
+            return SplashScreenViewController.Segue(rawValue: identifier)
+        }
+        return nil
+    }
+}
+
+extension SplashScreenViewController { 
+
+    enum Segue: String, Printable, SegueProtocol {
+        case shows = "shows"
+
+        var kind: SegueKind? {
+            switch (self) {
+            case shows:
+                return SegueKind(rawValue: "show")
+            default:
+                preconditionFailure("Invalid value")
+                break
+            }
+        }
+
+        var destination: UIViewController.Type? {
+            switch (self) {
+            case shows:
+                return ShowsCollectionViewController.self
+            default:
+                assertionFailure("Unknown destination")
+                return nil
+            }
+        }
+
+        var identifier: String? { return self.description } 
+        var description: String { return self.rawValue }
+    }
+
+}
+
 //MARK: - ShowsCollectionViewController
 extension UIStoryboardSegue {
     func selection() -> ShowsCollectionViewController.Segue? {
